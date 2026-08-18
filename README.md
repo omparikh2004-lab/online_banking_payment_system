@@ -238,37 +238,26 @@ transactions: {
 ## 📸 Screenshots
 
 ### Login Page
-![Login Page - Dark theme with email/password fields](images/01-login.png)
+<img width="1915" height="899" alt="image" src="https://github.com/user-attachments/assets/7eb174dc-1592-452e-a7d7-287caa41af59" />
+
 
 ### Registration Page
-![Registration Page - Create account with validation](images/02-register.png)
+<img width="1918" height="889" alt="image" src="https://github.com/user-attachments/assets/6164cc17-b9a5-4063-b321-9df5aecc3d3e" />
+
 
 ### Dashboard
-![Dashboard - Account overview with balance and statistics](images/03-dashboard.png)
+<img width="1910" height="917" alt="image" src="https://github.com/user-attachments/assets/f1dc3502-2830-4126-8824-df385fcc7f7e" />
+
 
 ### Fund Transfer
-![Fund Transfer - Send money between users](images/04-transfer.png)
+<img width="1885" height="772" alt="image" src="https://github.com/user-attachments/assets/539d265a-cc7a-4962-a155-04f1edb69cb8" />
 
-### Payments
-![Payments - Bill payment with multiple methods](images/05-payments.png)
 
-### Transaction History
-![Transaction History - Complete transaction list with filtering](images/06-history.png)
 
-### Settings
-![Settings - Profile and account management](images/07-settings.png)
 
-### Mobile View
-![Mobile View - Responsive design on smaller screens](images/08-mobile.png)
 
----
 
-**To add screenshots:**
-1. Take screenshots of each page
-2. Save them to the `images/` folder with the names above
-3. Replace placeholder images with your actual screenshots
 
----
 
 ## 📈 Future Enhancements
 
