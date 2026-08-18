@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureBank - Online Banking</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- ============ AUTH PAGES ============ -->
+    
+    <!-- Registration Page -->
+    <section id="register" class="auth-page">
+        <div class="auth-container">
+            <div class="auth-left">
+                <div class="brand-section">
+                    <div class="brand-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h1>SecureBank</h1>
+                    <p>Your trusted digital banking partner</p>
+                </div>
+                <div class="features-list">
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div>
+                            <h4>Bank-Level Security</h4>
+                            <p>256-bit encryption protection</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div>
+                            <h4>Instant Transactions</h4>
+                            <p>Real-time money transfers</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div>
+                            <h4>24/7 Support</h4>
+                            <p>Dedicated customer care</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="auth-right">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <h2>Create Account</h2>
+                        <p class="auth-subtitle">Join millions of secure users</p>
+                    </div>
+                    
+                    <form class="auth-form" id="register-form">
+                        <div class="form-group">
+                            <label><i class="fas fa-user"></i> Full Name</label>
+                            <input type="text" id="new-fullname" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-user-tag"></i> Username</label>
+                            <input type="text" id="new-username" placeholder="Choose a username" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-envelope"></i> Email</label>
+                            <input type="email" id="new-email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-lock"></i> Password</label>
+                            <div class="password-input">
+                                <input type="password" id="new-password" placeholder="Create a strong password" required>
+                                <span class="toggle-password" onclick="togglePassword('new-password')">
+                                    <i class="fas fa-eye"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-check-circle"></i> Confirm Password</label>
+                            <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+                        </div>
+                        <button type="button" onclick="register()" class="btn-primary btn-lg">
+                            <i class="fas fa-user-plus"></i> Create Account
+                        </button>
+                    </form>
+                    
+                    <div class="auth-footer">
+                        <p>Already have an account? <a href="#" onclick="showLogin(event)">Sign In</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Page -->
+    <section id="login" class="auth-page" style="display: none;">
+        <div class="auth-container">
+            <div class="auth-left">
+                <div class="brand-section">
+                    <div class="brand-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h1>SecureBank</h1>
+                    <p>Your trusted digital banking partner</p>
+                </div>
+                <div class="features-list">
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div>
+                            <h4>Bank-Level Security</h4>
+                            <p>256-bit encryption protection</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div>
+                            <h4>Instant Transactions</h4>
+                            <p>Real-time money transfers</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div>
+                            <h4>24/7 Support</h4>
+                            <p>Dedicated customer care</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="auth-right">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <h2>Welcome Back</h2>
+                        <p class="auth-subtitle">Sign in to your account</p>
+                    </div>
+                    
+                    <form class="auth-form" id="login-form">
+                        <div class="form-group">
+                            <label><i class="fas fa-user"></i> Username or Email</label>
+                            <input type="text" id="username" placeholder="Enter your username or email" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-lock"></i> Password</label>
+                            <div class="password-input">
+                                <input type="password" id="password" placeholder="Enter your password" required>
+                                <span class="toggle-password" onclick="togglePassword('password')">
+                                    <i class="fas fa-eye"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-options">
+                            <label class="remember-me">
+                                <input type="checkbox" id="remember-me">
+                                <span>Remember me</span>
+                            </label>
+                            <a href="#" onclick="showForgotPassword(event)" class="forgot-password">Forgot Password?</a>
+                        </div>
+                        <button type="button" onclick="login()" class="btn-primary btn-lg">
+                            <i class="fas fa-sign-in-alt"></i> Sign In
+                        </button>
+                    </form>
+
+                    <div id="login-error" class="error-message"></div>
+                    
+                    <div class="auth-footer">
+                        <p>Don't have an account? <a href="#" onclick="showRegister(event)">Create one</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forgot Password Page -->
+    <section id="forgot-password" class="auth-page" style="display: none;">
+        <div class="auth-container">
+            <div class="auth-left">
+                <div class="brand-section">
+                    <div class="brand-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h1>SecureBank</h1>
+                    <p>Your trusted digital banking partner</p>
+                </div>
+            </div>
+            <div class="auth-right">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <h2>Reset Password</h2>
+                        <p class="auth-subtitle">Enter your email to reset password</p>
+                    </div>
+                    
+                    <form class="auth-form">
+                        <div class="form-group">
+                            <label><i class="fas fa-envelope"></i> Email Address</label>
+                            <input type="email" id="reset-email" placeholder="Enter your email" required>
+                        </div>
+                        <button type="button" onclick="resetPassword()" class="btn-primary btn-lg">
+                            <i class="fas fa-paper-plane"></i> Send Reset Link
+                        </button>
+                    </form>
+                    
+                    <div class="auth-footer">
+                        <p><a href="#" onclick="showLogin(event)">Back to Sign In</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ MAIN DASHBOARD ============ -->
+    <div id="main-content" class="dashboard-container" style="display: none;">
+        <!-- Header/Navbar -->
+        <header class="navbar">
+            <div class="navbar-content">
+                <div class="navbar-brand">
+                    <i class="fas fa-university"></i>
+                    <span>SecureBank</span>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav class="navbar-menu" id="navbar-menu">
+                    <a href="#" onclick="showSection('dashboard', event)" class="nav-link active" data-section="dashboard">
+                        <i class="fas fa-home"></i> <span>Dashboard</span>
+                    </a>
+                    <a href="#" onclick="showSection('transfer', event)" class="nav-link" data-section="transfer">
+                        <i class="fas fa-exchange-alt"></i> <span>Transfer</span>
+                    </a>
+                    <a href="#" onclick="showSection('payments', event)" class="nav-link" data-section="payments">
+                        <i class="fas fa-credit-card"></i> <span>Payments</span>
+                    </a>
+                    <a href="#" onclick="showSection('history', event)" class="nav-link" data-section="history">
+                        <i class="fas fa-history"></i> <span>History</span>
+                    </a>
+                    <a href="#" onclick="showSection('settings', event)" class="nav-link" data-section="settings">
+                        <i class="fas fa-cog"></i> <span>Settings</span>
+                    </a>
+                </nav>
+                <div class="navbar-user">
+                    <span id="user-name-display" class="user-greeting">User</span>
+                    <button type="button" onclick="logout()" class="btn-logout" title="Logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="section-header">
+                    <div>
+                        <h1>Dashboard</h1>
+                        <p>Manage your finances with ease</p>
+                    </div>
+                    <span id="current-date" class="current-date"></span>
+                </div>
+
+                <!-- Primary Account Card -->
+                <div class="account-card primary-account">
+                    <div class="card-top">
+                        <div>
+                            <span class="card-type">Primary Account</span>
+                            <span class="card-number">•••• 4242</span>
+                        </div>
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <div class="card-middle">
+                        <p class="card-label">Total Balance</p>
+                        <h2 class="card-amount" id="total-balance">$10,000.00</h2>
+                    </div>
+                    <div class="card-bottom">
+                        <span class="card-holder" id="user-name">User</span>
+                        <span class="card-expiry">12/26</span>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon income">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        <div class="stat-content">
+                            <p class="stat-label">Income</p>
+                            <p class="stat-value" id="total-income">$0.00</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon expense">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                        <div class="stat-content">
+                            <p class="stat-label">Expenses</p>
+                            <p class="stat-value" id="total-expenses">$0.00</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon transaction">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div class="stat-content">
+                            <p class="stat-label">Transactions</p>
+                            <p class="stat-value" id="total-transactions">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="actions-grid">
+                        <button type="button" onclick="showSection('transfer', event)" class="action-card">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Send Money</span>
+                        </button>
+                        <button type="button" onclick="showSection('payments', event)" class="action-card">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Pay Bills</span>
+                        </button>
+                        <button type="button" onclick="showSection('history', event)" class="action-card">
+                            <i class="fas fa-history"></i>
+                            <span>View History</span>
+                        </button>
+                        <button type="button" onclick="showSection('settings', event)" class="action-card">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recent Transactions -->
+                <div class="recent-section">
+                    <h3>Recent Transactions</h3>
+                    <div id="recent-transactions" class="transaction-list">
+                        <div class="empty-state">
+                            <i class="fas fa-inbox"></i>
+                            <p>No transactions yet</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Transfer Section -->
+            <section id="transfer" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <div>
+                        <h1>Send Money</h1>
+                        <p>Transfer funds to another account</p>
+                    </div>
+                </div>
+
+                <div class="form-container">
+                    <div class="form-card">
+                        <h3><i class="fas fa-exchange-alt"></i> Transfer Details</h3>
+                        <form class="form-content" id="transfer-form">
+                            <div class="form-group">
+                                <label><i class="fas fa-user"></i> Recipient Username</label>
+                                <input type="text" id="transfer-recipient" placeholder="Enter recipient username" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-dollar-sign"></i> Amount</label>
+                                <input type="number" id="transfer-amount" placeholder="0.00" min="0" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-sticky-note"></i> Description (Optional)</label>
+                                <input type="text" id="transfer-note" placeholder="e.g., Rent payment">
+                            </div>
+                            <button type="button" onclick="makeTransfer()" class="btn-primary btn-lg">
+                                <i class="fas fa-paper-plane"></i> Send Money
+                            </button>
+                        </form>
+                        <p id="transfer-success" class="success-message"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payments Section -->
+            <section id="payments" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <div>
+                        <h1>Pay Bills</h1>
+                        <p>Make payments easily</p>
+                    </div>
+                </div>
+
+                <div class="form-container">
+                    <div class="form-card">
+                        <h3><i class="fas fa-credit-card"></i> Payment Details</h3>
+                        <form class="form-content" id="payment-form">
+                            <div class="form-group">
+                                <label><i class="fas fa-dollar-sign"></i> Amount</label>
+                                <input type="number" id="amount" placeholder="0.00" min="0" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-credit-card"></i> Payment Method</label>
+                                <select id="method" class="form-select">
+                                    <option value="Credit Card">Credit Card</option>
+                                    <option value="Debit Card">Debit Card</option>
+                                    <option value="Bank Transfer">Bank Transfer</option>
+                                    <option value="E-Wallet">E-Wallet</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-file-alt"></i> Description</label>
+                                <input type="text" id="payment-description" placeholder="What is this payment for?" required>
+                            </div>
+                            <button type="button" onclick="makePayment()" class="btn-primary btn-lg">
+                                <i class="fas fa-check"></i> Pay Now
+                            </button>
+                        </form>
+                        <p id="payment-success" class="success-message"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- History Section -->
+            <section id="history" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <div>
+                        <h1>Transaction History</h1>
+                        <p>View your transaction records</p>
+                    </div>
+                </div>
+
+                <div class="history-controls">
+                    <div class="filter-group">
+                        <select id="filter-type" onchange="filterHistory()" class="form-select">
+                            <option value="">All Types</option>
+                            <option value="Payment">Payments</option>
+                            <option value="Fund Transfer">Transfers</option>
+                        </select>
+                        <input type="date" id="filter-date" onchange="filterHistory()" class="form-select">
+                    </div>
+                    <button type="button" onclick="clearHistory()" class="btn-secondary">
+                        <i class="fas fa-trash"></i> Clear All
+                    </button>
+                </div>
+
+                <div id="transaction-history" class="transaction-list">
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <p>No transactions found</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <div>
+                        <h1>Settings</h1>
+                        <p>Manage your account preferences</p>
+                    </div>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h3><i class="fas fa-user-circle"></i> Profile</h3>
+                        <div class="form-content">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" id="user-fullname" placeholder="Your full name">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="user-email" placeholder="Your email">
+                            </div>
+                            <button type="button" onclick="updateProfile()" class="btn-primary">Update Profile</button>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3><i class="fas fa-credit-card"></i> Payment Methods</h3>
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <i class="fas fa-credit-card"></i>
+                                <div>
+                                    <span class="method-name">Credit Card</span>
+                                    <span class="method-number">•••• 4242</span>
+                                </div>
+                                <span class="badge">Default</span>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fas fa-credit-card"></i>
+                                <div>
+                                    <span class="method-name">Debit Card</span>
+                                    <span class="method-number">•••• 5555</span>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-secondary" onclick="addPaymentMethod()">
+                                <i class="fas fa-plus"></i> Add Payment Method
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3><i class="fas fa-lock"></i> Security</h3>
+                        <div class="form-content">
+                            <button type="button" onclick="changePassword()" class="btn-secondary">
+                                <i class="fas fa-key"></i> Change Password
+                            </button>
+                            <button type="button" onclick="deleteAccount()" class="btn-danger">
+                                <i class="fas fa-trash"></i> Delete Account
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notification" class="notification">
+        <span id="notification-message"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
